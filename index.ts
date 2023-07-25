@@ -80,7 +80,7 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
 
           vehicleList.push(newVehicle);
           console.log(vehicleList)
-        return res.status(201).json('Vehicle added');
+        return res.status(201).json({ message: 'Vehicle added' });
     }
     
     if (((!draft && !wingspan) && model) ) {
