@@ -39,7 +39,7 @@ app.post("/vehicle/add", (req, res) => {
         newVehicle.draft = draft;
         vehicleList.push(newVehicle);
         console.log(vehicleList);
-        return res.status(201).json({ message: 'Vehicle added' });
+        return res.status(201).json('Vehicle added');
     }
     if (wingspan) {
         const newVehicle = {};
@@ -62,7 +62,7 @@ app.post("/vehicle/add", (req, res) => {
         newVehicle.wingspan = wingspan;
         vehicleList.push(newVehicle);
         console.log(vehicleList);
-        return res.status(201).json({ message: 'Vehicle added' });
+        return res.status(201).json('Vehicle added');
     }
     if (((!draft && !wingspan) && model)) {
         const newVehicle = {
@@ -90,7 +90,7 @@ app.post("/vehicle/add", (req, res) => {
         ;
         vehicleList.push(newVehicle);
         console.log(vehicleList);
-        return res.status(201).json({ message: 'Vehicle added' });
+        return res.status(201).json('Vehicle added');
     }
     if (!model || !color || !year || !power || !bodyType || !wheelCount || !draft || !wingspan) {
         return res.status(400).json({ error: 'Some fields are required.' });

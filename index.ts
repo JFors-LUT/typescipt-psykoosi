@@ -55,7 +55,7 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
         
           vehicleList.push(newVehicle);
           console.log(vehicleList)
-        return res.status(201).json({ message: 'Vehicle added' });
+        return res.status(201).json('Vehicle added');
     }
 
     if(wingspan){
@@ -80,7 +80,7 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
 
           vehicleList.push(newVehicle);
           console.log(vehicleList)
-        return res.status(201).json({ message: 'Vehicle added' });
+        return res.status(201).json('Vehicle added');
     }
     
     if (((!draft && !wingspan) && model) ) {
@@ -110,7 +110,7 @@ app.post("/vehicle/add", (req: Request, res: Response) => {
           vehicleList.push(newVehicle);
           console.log(vehicleList);
           
-      return res.status(201).json({ message: 'Vehicle added' });
+      return res.status(201).json('Vehicle added');
       }
     
 if (!model || !color || !year || !power || !bodyType || !wheelCount || !draft || !wingspan){
