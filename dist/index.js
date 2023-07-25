@@ -64,7 +64,7 @@ app.post("/vehicle/add", (req, res) => {
         console.log(vehicleList);
         return res.status(201).json({ message: 'Vehicle added' });
     }
-    if ((!draft && !wingspan)) {
+    if (((!draft && !wingspan) && model)) {
         const newVehicle = {
             model,
         };

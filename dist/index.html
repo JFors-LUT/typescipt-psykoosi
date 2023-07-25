@@ -30,12 +30,14 @@
       <button type="submit">Add Vehicle</button>
       
     </form>
+    <p id="return-text"></p>
     <script>
         const vehicleForm = document.getElementById('vehicleForm');
     
         vehicleForm.addEventListener('submit', (event) => {
           event.preventDefault();
-    
+
+          const returnText = document.getElementById('return-text'); 
           const model = document.getElementById('model').value;
           const color = document.getElementById('color').value;
           const year = parseInt(document.getElementById('year').value);
@@ -62,6 +64,7 @@
                 }
                 })
                 .then((data) => {
+                  returnText.innerHTML = data.message
                 console.log(data.message);
                 })
                 .catch((error) => {
