@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle</title>
+</head>
+<body>
+
+    <div id="values"></div>
+    <h1>Add Vehicle</h1>
+    <form id="vehicleForm">
+      <label for="model">Model:</label>
+      <input type="text" id="model" ><br>
+      <label for="color">Color:</label>
+      <input type="text" id="color" ><br>
+      <label for="year">Year:</label>
+      <input type="number" id="year" ><br>
+      <label for="power">Power:</label>
+      <input type="number" id="power" ><br>
+      <label for="bodyType">Body Type:</label>
+      <input type="text" id="bodyType" ><br>
+      <label for="wheelCount">Wheel Count:</label>
+      <input type="number" id="wheelCount" ><br>
+      <label for="draft">Draft(boat):</label>
+      <input type="number" id="draft" ><br>
+      <label for="wingspan">Wingspan(plane):</label>
+      <input type="number" id="wingspan" ><br>
+      <button type="submit">Add Vehicle</button>
+      
+    </form>
+    <script>
+        const vehicleForm = document.getElementById('vehicleForm');
+    
+        vehicleForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+    
+          const model = document.getElementById('model').value;
+          const color = document.getElementById('color').value;
+          const year = parseInt(document.getElementById('year').value);
+          const power = parseInt(document.getElementById('power').value);
+          const bodyType = document.getElementById('bodyType').value;
+          const wheelCount = parseInt(document.getElementById('wheelCount').value);
+          const draft = parseInt(document.getElementById('draft').value);
+          const wingspan = parseInt(document.getElementById('wingspan').value);
+    
+          const vehicleData = { model, color, year, power, bodyType, wheelCount, draft, wingspan};
+    
+          fetch('/vehicle/add', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(vehicleData),
+            })
+                .then((response) => {
+                if (response.ok) {
+                    return response.json(); 
+                } else {
+                    throw new Error('Failed to add vehicle');
+                }
+                })
+                .then((data) => {
+                console.log(data.message);
+                })
+                .catch((error) => {
+                console.error('Error:', error);
+                });
+            });
+      </script>
+      <script>"index.js"</script>
+
+
+</body>
+</html>
